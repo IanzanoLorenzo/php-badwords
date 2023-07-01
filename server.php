@@ -2,8 +2,11 @@
     $parola = $_POST['parola'];
     $paragrafo = $_POST['paragrafo'];
     $parolaLow = strtolower($parola);
+    $arrayParola = explode(" ", $parolaLow);
     $paragrafoLow = strtolower($paragrafo);
-    $censoredPar = str_replace($parolaLow, "*****", $paragrafoLow)
+    $arrayParagrafo = explode(" ", $paragrafoLow);
+    $censoredArr = str_replace($arrayParola, "*****", $arrayParagrafo);
+    $censoredPar = implode(" ", $censoredArr)
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +20,14 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center">
+            <div class="col-6 offset-3 text-center card">
                 <?php echo $paragrafo ?>
             </div>
-            <div class="col-12 text-center">
+            <div class="col-6 offset-3 text-end">
+                <?php echo strlen($paragrafo) ?>
+            </div>
+
+            <div class="col-6 offset-3 text-center card">
                 <?php echo $censoredPar ?>
             </div>
         </div>
